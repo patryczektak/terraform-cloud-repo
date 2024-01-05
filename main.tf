@@ -1,12 +1,13 @@
 terraform{
 	cloud {
-		organization = "terraform-cloud-organization"
+		organization = "potterybridge-cloud-organization"
 
 		workspaces {
-			name = "common"
+			name = "production"
 		}
 	}
 }
 
-resource "random_pet" "vpc" {}
-resource "random_pet" "s3" {}
+resource "aws_s3_bucket" "main" {
+	bucket_prefix = "migrate_me"
+}
